@@ -85,7 +85,7 @@
           fzf
 	  lazygit
 	  eza
-	  wl-copy
+	  wl-clipboard
 	  fish
 	  fastfetch
           # Add any other packages you want in your default development shell here
