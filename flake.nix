@@ -85,6 +85,8 @@
           fzf
 	  lazygit
 	  eza
+	  wl-copy
+	  fish
 	  fastfetch
           # Add any other packages you want in your default development shell here
           # For example, from unstable:
