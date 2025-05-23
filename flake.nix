@@ -17,6 +17,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     ...
   } @ inputs: let
@@ -73,5 +74,36 @@
         ];
       };
     };
+  # Add this section for development shells
+    devShells = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+      unstablePkgs = nixpkgs-unstable.legacyPackages.${system}; # Access unstable packages
+    in {
+      # The 'default' development shell when you run 'nix develop'
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          fzf
+	  lazygit
+	  eza
+	  fastfetch
+          # Add any other packages you want in your default development shell here
+          # For example, from unstable:
+          # unstablePkgs.htop
+        ];
+
+        # Environment variables specific to this shell (optional)
+        shellHook = ''
+          echo "Entering a flake-powered development shell!"
+        '';
+      };
+
+      # You can define other named development shells if needed:
+      # myOtherShell = pkgs.mkShell {
+      #   buildInputs = with pkgs; [
+      #     git
+      #     nodejs
+      #   ];
+      # };
+    });
   };
 }
