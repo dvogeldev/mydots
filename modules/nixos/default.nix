@@ -3,19 +3,4 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
-  ./core.nix
-  ./boot/nix
-  ./zram.nix
-  ./impermanence.nix
-  ./users.nix
-  ./desktop/gnome.nix
-  ./ssh.nix
-  # You had printing commented out, uncomment if you want it:
-  # ./printing.nix
-
-  # Other modules you might want to enable from the starter config:
-  # ./gaming.nix
-  # ./virtualization.nix
-  # ./dev.nix
-  # ./containers.nix
 }
