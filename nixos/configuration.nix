@@ -172,10 +172,21 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim
     brave
     wget
     git
+    distrobox
+    sops
+    procs
+    fish
+    age
+    fontconfig
+    liberation_ttf
+    poppins
+    nerd-fonts.hasklug
+    nerd-fonts.intone-mono
+    alejandra
   ];
 
   programs.command-not-found.enable = true;
