@@ -52,6 +52,7 @@
     homeDirectory = "/home/david";
     packages = with pkgs; [
       coreutils
+      freetube
       gcc
       jq
       adwaita-icon-theme

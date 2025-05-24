@@ -6,5 +6,6 @@
 }: {
   imports = [
     ./shell
+    ./fonts.nix
   ];
 }
