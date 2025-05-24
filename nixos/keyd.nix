@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
 {
-# Add keyd service and configuration
+  config,
+  pkgs,
+  ...
+}: {
+  # Add keyd service and configuration
   services.keyd = {
     enable = true;
     keyboards = {
@@ -14,4 +17,4 @@
       };
     };
   };
- }
+}

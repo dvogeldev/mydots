@@ -1,6 +1,5 @@
-{ config, ... }:
-{
- # Firewall
+{config, ...}: {
+  # Firewall
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [22];
@@ -10,4 +9,4 @@
       iptables -A INPUT -p tcp --dport 22 -j DROP
     '';
   };
-  }
+}

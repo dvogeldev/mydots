@@ -74,7 +74,7 @@
         ];
       };
     };
-  # Add this section for development shells
+    # Add this section for development shells
     devShells = forAllSystems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       unstablePkgs = nixpkgs-unstable.legacyPackages.${system}; # Access unstable packages
@@ -83,11 +83,11 @@
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
           fzf
-	  lazygit
-	  eza
-	  wl-clipboard
-	  fish
-	  fastfetch
+          lazygit
+          eza
+          wl-clipboard
+          fish
+          fastfetch
           # Add any other packages you want in your default development shell here
           # For example, from unstable:
           # unstablePkgs.htop

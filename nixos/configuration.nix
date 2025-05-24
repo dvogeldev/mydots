@@ -28,7 +28,7 @@
     ./firewall.nix
     ./nvidia.nix
 
-     #  "${impermanence}/nixos.nix"
+    #  "${impermanence}/nixos.nix"
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -42,12 +42,12 @@
     memoryPercent = 50;
   };
 
-   # Impermanence configuration (root filesystem)
+  # Impermanence configuration (root filesystem)
   # The actual rootfs will be `@root`, which is ephemeral
   fileSystems."/" = {
     device = "/dev/mapper/cryptroot";
     fsType = "btrfs";
-    options = [ "subvol=@root" "compress=zstd:3" "noatime" ];
+    options = ["subvol=@root" "compress=zstd:3" "noatime"];
   };
 
   # Paths from the root that need to persist across reboots.
@@ -77,7 +77,7 @@
   fileSystems."/tmp" = {
     device = "tmpfs";
     fsType = "tmpfs";
-    options = [ "mode=1777" ];
+    options = ["mode=1777"];
   };
 
   nixpkgs = {
@@ -115,7 +115,7 @@
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
-      download-buffer-size = 16 * 1024 * 1024;  #fix for download buffer size warning
+      download-buffer-size = 16 * 1024 * 1024; #fix for download buffer size warning
     };
 
     # Opinionated: disable channels
@@ -127,7 +127,7 @@
   };
 
   networking.hostName = "dvpc";
-  networking.networkmanager.enable = true; 
+  networking.networkmanager.enable = true;
 
   time.timeZone = "America/Detroit";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -164,10 +164,9 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+      extraGroups = ["wheel" "networkmanager" "libvirtd"];
     };
   };
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
