@@ -17,6 +17,7 @@
     fd
     imagemagick
     nixfmt-rfc-style
+    nixd
     pinentry-emacs
     zstd
 
