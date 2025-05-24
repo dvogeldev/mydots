@@ -84,7 +84,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "ghostty -e fish";
+      command = "ptyxis -e fish";
       name = "Terminal";
     };
     "org/gnome/desktop/wm/keybindings" = {
@@ -101,6 +101,7 @@
   programs.git.enable = true;
   programs.fd.enable = true;
   programs.starship.enable = true;
+  programs.ptyxis.enable = true;
 
   # Services
   services.easyeffects.enable = true;
