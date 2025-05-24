@@ -48,6 +48,47 @@
   home = {
     username = "david";
     homeDirectory = "/home/david";
+    packages = with pkgs; [
+      coreutils
+      gcc
+      jq
+      adwaita-icon-theme
+      brave
+      easyeffects
+      wl-clipboard
+      wlr-randr
+      zip
+    ];
+    sessionVariables = {
+      XCURSOR_THEME = "adwaita";
+      XCURSOR_SIZE = "24";
+    };
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "Adwaita";
+      size = 24;
+    };
+  };
+
+  # Gnome keyboard shortcuts
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>Return";
+      command = "ghostty -e fish";
+      name = "Terminal";
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      close = ["<Super>q"];
+    };
   };
 
   # Add stuff for your user as you see fit:
@@ -57,6 +98,11 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+  programs.fd.enable = true;
+  programs.starship.enable = true;
+
+  # Services
+  services.easyeffects.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
