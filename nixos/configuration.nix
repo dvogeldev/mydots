@@ -24,6 +24,7 @@
     ./hardware-configuration.nix
     ./data-drive.nix
     ./keyd.nix
+    ./podman.nix
 
      #  "${impermanence}/nixos.nix"
   ];
