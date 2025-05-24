@@ -20,6 +20,7 @@
     # ./nvim.nix
     ./common
     ./apps
+    ./editor
   ];
 
   nixpkgs = {
