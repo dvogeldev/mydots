@@ -151,6 +151,9 @@
     pulse.enable = true;
   };
 
+  # Dbus
+  services.dbus.enable = true;
+
   # services.libinput.enable = true;
 
   users.users = {
@@ -165,9 +168,6 @@
     };
   };
 
-  programs.command-not-found.enable = true;
-
-  # programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -177,6 +177,9 @@
     wget
     git
   ];
+
+  programs.command-not-found.enable = true;
+  programs.dconf.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -196,6 +199,8 @@
       PasswordAuthentication = false;
     };
   };
+
+  security.sudo.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.05";
