@@ -25,6 +25,7 @@
     ./data-drive.nix
     ./keyd.nix
     ./podman.nix
+    ./firewall.nix
 
      #  "${impermanence}/nixos.nix"
   ];
