@@ -113,7 +113,9 @@
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
+      download-buffer-size = 16 * 1024 * 1024;  #fix for download buffer size warning
     };
+
     # Opinionated: disable channels
     channel.enable = false;
 
