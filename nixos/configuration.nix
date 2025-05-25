@@ -27,7 +27,8 @@
     ./podman.nix
     ./firewall.nix
     ./nvidia.nix
-    ./gnome.nix
+    # ./gnome.nix
+    ./cosmic.nix
 
     #  "${impermanence}/nixos.nix"
   ];
