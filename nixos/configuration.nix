@@ -154,6 +154,9 @@
   # Dbus
   services.dbus.enable = true;
 
+  # Flatpaks
+  services.flatpak.enable = true;
+
   # services.libinput.enable = true;
 
   users.users = {
