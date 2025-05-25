@@ -10,7 +10,9 @@
     cll = "clear && eza -lh --group-directories-first";
     cls = "clear && ls";
     # Nixos
+    nrb = "sudo nixos-rebuild boot --flake ~/mydots#dvpc";
     nrs = "sudo nixos-rebuild switch --flake ~/mydots#dvpc";
+    nrt = "sudo nixos-rebuild test --flake ~/mydots#dvpc";
     hms = "home-manager switch --flake ~/mydots#david@dvpc";
     sr = "sudo reboot";
     # Eza
