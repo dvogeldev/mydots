@@ -103,7 +103,7 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
   programs.fd.enable = true;
-  programs.starship.enable = true;
+  # programs.starship.enable = true;
   programs.ptyxis.enable = true;
 
   # Services
