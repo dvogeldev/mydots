@@ -194,6 +194,8 @@
     unzip
   ];
 
+  fonts.fontDir.enable = true;
+
   programs.command-not-found.enable = true;
   programs.dconf.enable = true;
 
