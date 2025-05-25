@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./freetube.nix
-    #./ghostty.nix
-    ./ptyxis.nix
+    ./ghostty.nix
+    # ./ptyxis.nix
   ];
 }
