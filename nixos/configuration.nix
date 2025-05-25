@@ -196,6 +196,33 @@
 
   fonts.fontDir.enable = true;
 
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml";
+    fonts = {
+      serif = {
+        package = pkgs.liberation_ttf;
+	name = "Liberation";
+      };
+      sansSerif = {
+        package = pkgs.poppins;
+	name = "Poppins";
+      };
+      monospace = {
+        package = pkgs.nerd-fonts.hasklug;
+	name = "Hasklug Nerd Fonts";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+	name = "Noto Color Emoji";
+      };
+      sizes.applications = 14;
+      sizes.popups = 14;
+      sizes.desktop = 14;
+    };
+    image = /home/david/.local/share/wallpapers/boliviainteligente-uf9qc_vaTS4-unsplash.jpg;
+  };
+
   programs.command-not-found.enable = true;
   programs.dconf.enable = true;
 
