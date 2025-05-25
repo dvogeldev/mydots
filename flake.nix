@@ -8,6 +8,8 @@
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.05";
@@ -18,6 +20,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    nixos-cosmic,
     home-manager,
     ...
   } @ inputs: let
@@ -58,6 +61,13 @@
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
+	  {
+	    nix.settings = {
+	      substituters = [ "https://cosmic.cachix.org/" ];
+	      trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+	    };
+	  }
+	  nixos-cosmic.nixosModules.default
         ];
       };
     };
