@@ -27,6 +27,7 @@
     ./podman.nix
     ./firewall.nix
     ./nvidia.nix
+    ./gnome.nix
 
     #  "${impermanence}/nixos.nix"
   ];
@@ -131,16 +132,6 @@
 
   time.timeZone = "America/Detroit";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia"];
-    xkb.layout = "us";
-    displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
-    desktopManager.gnome.enable = true;
-  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
