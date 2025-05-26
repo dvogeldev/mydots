@@ -63,18 +63,24 @@
       wlr-randr
       zip
     ];
-    sessionVariables = {
-      XCURSOR_THEME = "adwaita";
-      XCURSOR_SIZE = "24";
-    };
+    # sessionVariables = {
+    #   XCURSOR_THEME = "adwaita";
+    #   XCURSOR_SIZE = "24";
+    # };
   };
 
-  gtk = {
+  # gtk = {
+  #   enable = true;
+  #   cursorTheme = {
+  #     name = "Adwaita";
+  #     size = 24;
+  #   };
+  # };
+
+  stylix = {
     enable = true;
-    cursorTheme = {
-      name = "Adwaita";
-      size = 24;
-    };
+    autoEnable = true;
+    cursor.size = 48;
   };
 
   # Gnome keyboard shortcuts
@@ -82,6 +88,7 @@
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
       ];
     };
 
@@ -92,6 +99,11 @@
     };
     "org/gnome/desktop/wm/keybindings" = {
       close = ["<Super>q"];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>b";
+      command = "brave";
+      name = "Brave browser";
     };
   };
 
