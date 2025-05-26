@@ -120,7 +120,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "ptyxis -e fish";
+      command = "ghostty -e fish";
       name = "Terminal";
     };
     "org/gnome/desktop/wm/keybindings" = {
@@ -133,16 +133,11 @@
     };
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
-
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
   programs.fd.enable = true;
   # programs.starship.enable = true;
-  programs.ptyxis.enable = true;
 
   # Services
   services.easyeffects.enable = true;
