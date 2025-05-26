@@ -30,7 +30,8 @@
   let
     inherit (self) outputs;
 
-    themePolarity = "dark"; # or "light"
+    # themePolarity = "dark";
+    themePolarity = "light";
 
     themeConfig = {
       polarity = themePolarity;
@@ -39,8 +40,8 @@
 	wallpaper = ./wallpapers/sphere-dots.jpg;
       };
       light = {
-        base16 = "ayu-light";
-	wallpaper = ./wallpapers/sphere-dots.jpg;
+        base16 = "solarized-light";
+	wallpaper = ./wallpapers/light-default.jpg;
       };
       # derived values
       base16 = builtins.getAttr themePolarity {
