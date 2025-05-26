@@ -8,7 +8,7 @@
     enableFishIntegration = true;
     installBatSyntax = true;
     settings = {
-      theme = "kanagawa-dragon";
+      theme = "stylix";
       font-size = 14;
     };
     themes = {
