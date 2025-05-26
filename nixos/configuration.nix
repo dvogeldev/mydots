@@ -200,7 +200,10 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
+    image = /home/david/.local/share/wallpapers/sphere-dots.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
     fonts = {
       serif = {
         package = pkgs.liberation_ttf;
@@ -222,7 +225,6 @@
       sizes.popups = 14;
       sizes.desktop = 14;
     };
-    image = /home/david/.local/share/wallpapers/sphere-dots.jpg;
     polarity = "dark";
   };
 
