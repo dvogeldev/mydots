@@ -22,6 +22,7 @@
     ./common
     ./apps
     ./editor
+    ./desktop/gnome.nix
   ];
 
   nixpkgs = {
@@ -109,29 +110,6 @@
     # cursor.size = 48;
   };
 
-  # Gnome keyboard shortcuts
-  dconf.settings = {
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-      ];
-    };
-
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Super>Return";
-      command = "ghostty -e fish";
-      name = "Terminal";
-    };
-    "org/gnome/desktop/wm/keybindings" = {
-      close = ["<Super>q"];
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = "<Super>b";
-      command = "brave";
-      name = "Brave browser";
-    };
-  };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
