@@ -79,8 +79,33 @@
 
   stylix = {
     enable = true;
-    autoEnable = true;
-    cursor.size = 48;
+    image = /home/david/.local/share/wallpapers/sphere-dots.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
+    fonts = {
+      serif = {
+        package = pkgs.liberation_ttf;
+	name = "Liberation";
+      };
+      sansSerif = {
+        package = pkgs.poppins;
+	name = "Poppins";
+      };
+      monospace = {
+        package = pkgs.nerd-fonts.hasklug;
+	name = "Hasklug Nerd Fonts";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+	name = "Noto Color Emoji";
+      };
+      sizes.applications = 14;
+      sizes.popups = 14;
+      sizes.desktop = 14;
+    };
+    # cursor.size = 48;
+    polarity = "dark";
   };
 
   # Gnome keyboard shortcuts
