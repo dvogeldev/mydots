@@ -26,8 +26,33 @@
     stylix,
     home-manager,
     ...
-  } @ inputs: let
+  } @ inputs:
+  let
     inherit (self) outputs;
+
+    themePolarity = "dark"; # or "light"
+
+    themeConfig = {
+      polarity = themePolarity;
+      dark = {
+        base16 = "kanagawa-dragon";
+	wallpaper = ./wallpapers/sphere-dots.jpg;
+      };
+      light = {
+        base16 = "ayu-light";
+	wallpaper = ./wallpapers/sphere-dots.jpg;
+      };
+      # derived values
+      base16 = builtins.getAttr themePolarity {
+        dark = themeConfig.dark.base16;
+	light = themeConfig.light.base16;
+      };
+      wallpaper = builtins.getAttr themePolarity {
+        dark = themeConfig.dark.wallpaper;
+	light = themeConfig.light.wallpaper;
+      };
+    };
+
     # Supported systems for your flake packages, shell, etc.
     systems = [
       "aarch64-linux"
@@ -60,7 +85,9 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       dvpc = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+	  inherit inputs outputs themeConfig;
+	};
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
@@ -74,7 +101,9 @@
     homeConfigurations = {
       "david@dvpc" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+	  inherit inputs outputs themeConfig;
+	};
         modules = [
           # > Our main home-manager configuration file <
           ./home-manager/home.nix

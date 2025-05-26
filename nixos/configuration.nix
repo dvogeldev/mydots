@@ -6,6 +6,7 @@
   lib,
   config,
   pkgs,
+  themeConfig,
   ...
 }: {
   # You can import other NixOS modules here
@@ -200,10 +201,10 @@
 
   stylix = {
     enable = true;
-    image = /home/david/.local/share/wallpapers/sphere-dots.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
+    image = themeConfig.wallpaper;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${themeConfig.base16}.yaml";
+    polarity = themeConfig.polarity;
+
     fonts = {
       serif = {
         package = pkgs.liberation_ttf;
@@ -225,7 +226,6 @@
       sizes.popups = 14;
       sizes.desktop = 14;
     };
-    polarity = "dark";
   };
 
   programs.command-not-found.enable = true;

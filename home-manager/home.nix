@@ -6,6 +6,7 @@
   lib,
   config,
   pkgs,
+  themeConfig,
   ...
 }: {
   # You can import other home-manager modules here
@@ -78,12 +79,12 @@
   # };
 
   stylix = {
-    autoEnable = true;
     enable = true;
-    image = ../wallpapers/sphere-dots.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
+    autoEnable = true;
+    image = themeConfig.wallpaper;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${themeConfig.base16}.yaml";
+    polarity = themeConfig.polarity;
+
     fonts = {
       serif = {
         package = pkgs.liberation_ttf;
@@ -106,7 +107,6 @@
       sizes.desktop = 14;
     };
     # cursor.size = 48;
-    polarity = "dark";
   };
 
   # Gnome keyboard shortcuts
