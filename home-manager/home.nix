@@ -78,8 +78,9 @@
   # };
 
   stylix = {
+    autoEnable = true;
     enable = true;
-    image = /home/david/.local/share/wallpapers/sphere-dots.jpg;
+    image = ../wallpapers/sphere-dots.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
