@@ -30,8 +30,8 @@
   let
     inherit (self) outputs;
 
-    # themePolarity = "dark";
-    themePolarity = "light";
+    themePolarity = "dark";
+    # themePolarity = "light";
 
     themeConfig = {
       polarity = themePolarity;
