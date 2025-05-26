@@ -91,7 +91,9 @@
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
           fzf
+	  cmake
           lazygit
+	  libtool
           eza
           wl-clipboard
           fish
