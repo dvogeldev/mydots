@@ -14,8 +14,10 @@
   home.packages = with pkgs; [
     binutils # native-comp needs 'as' provided by this
     gnutls
+    emacsPackages.vterm
     fd
     imagemagick
+    libvterm
     nixfmt-rfc-style
     nixd
     pinentry-emacs
