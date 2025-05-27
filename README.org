@@ -1,0 +1,176 @@
+#+TITLE: NixOS & Home Manager Configuration
+#+AUTHOR: DavidV
+#+DATE: 2025-05-27
+#+OPTIONS: toc:t
+
+* Overview
+
+This repository contains a modular, host-based NixOS configuration using flakes, with Home Manager for user-level management. The setup is designed for reproducibility, maintainability, and easy customization. The primary workstation is named =dvpc=, and the configuration is structured to support multiple hosts, with =dvpc= as the main example.
+
+* Structure
+
+- =flake.nix=: Flake entry point, defines all hosts and user configurations.
+- =configuration.nix=: Main NixOS configuration for =dvpc=.
+- =hardware-configuration.nix=: Auto-generated hardware settings for =dvpc=.
+- =home.nix=: Home Manager configuration for the main user on =dvpc=.
+- =modules/=: Custom NixOS modules (e.g., =gnome.nix=, =cosmic.nix=, =nvidia.nix=, etc.).
+- =programs/=: Home Manager program modules (e.g., =emacs.nix=, =bat.nix=, =fzf.nix=, etc.).
+- =filetree.txt=: Directory structure overview.
+
+* Host-based Flake Design
+
+The configuration is designed to support multiple hosts, with each host having its own system and user configuration. The primary host is =dvpc=.
+
+#+begin_src nix
+# flake.nix (excerpt)
+{
+  outputs = { self, nixpkgs, home-manager, ... }:
+    {
+      nixosConfigurations.dvpc = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./hardware-configuration.nix
+          # ...other modules
+        ];
+      };
+
+      homeConfigurations."your-username@dvpc" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+          ./home.nix
+          # ...program modules
+        ];
+      };
+    };
+}
+#+end_src
+
+- *nixosConfigurations.dvpc*: System configuration for the =dvpc= workstation.
+- *homeConfigurations."your-username@dvpc"*: Home Manager configuration for the main user on =dvpc=.
+
+* System Configuration (=dvpc=)
+
+- =configuration.nix= and =hardware-configuration.nix= are tailored for =dvpc=.
+- Imports custom modules for desktop environments, GPU, firewall, storage, containers, and input devices.
+- Designed for easy extension to other hosts by adding new entries in =flake.nix=.
+
+* Home Manager Configuration (=dvpc=)
+
+- =home.nix= and program modules define user-level packages, dotfiles, and settings for the main user on =dvpc=.
+- Modular structure allows for per-host and per-user customization.
+
+* Desktop Environments
+
+- =gnome.nix= and =cosmic.nix= provide alternative desktop environments for =dvpc=.
+- =nvidia.nix= ensures proper GPU support.
+
+* Security, Networking, and Storage
+
+- =firewall.nix= for firewall rules.
+- =podman.nix= for rootless containers.
+- =data-drive.nix= for additional storage.
+
+* Usage
+
+** Building and Switching
+
+#+begin_src shell
+# For system (dvpc)
+sudo nixos-rebuild switch --flake .#dvpc
+
+# For user (replace your-username)
+home-manager switch --flake .#your-username@dvpc
+#+end_src
+
+** Updating
+
+#+begin_src shell
+nix flake update
+# Then rebuild as above
+#+end_src
+
+* File Tree
+#+begin_example
+Name
+.
+├── docs
+│   └── fileTree.txt
+├── home-manager
+│   ├── apps
+│   │   ├── default.nix
+│   │   ├── freetube.nix
+│   │   ├── ghostty.nix
+│   │   └── ptyxis.nix
+│   ├── common
+│   │   ├── shell
+│   │   │   ├── aliases.nix
+│   │   │   ├── atuin.nix
+│   │   │   ├── bash.nix
+│   │   │   ├── bat.nix
+│   │   │   ├── bottom.nix
+│   │   │   ├── default.nix
+│   │   │   ├── eza.nix
+│   │   │   ├── fish.nix
+│   │   │   ├── fzf.nix
+│   │   │   ├── lazygit.nix
+│   │   │   ├── ripgrep.nix
+│   │   │   ├── skim.nix
+│   │   │   ├── tealdeer.nix
+│   │   │   ├── yazi.nix
+│   │   │   └── zoxide.nix
+│   │   ├── default.nix
+│   │   └── fonts.nix
+│   ├── desktop
+│   │   └── gnome.nix
+│   ├── editor
+│   │   ├── default.nix
+│   │   └── emacs.nix
+│   └── home.nix
+├── hosts
+│   ├── common
+│   │   ├── default.nix
+│   │   ├── keyd.nix
+│   │   └── podman.nix
+│   ├── desktop
+│   │   ├── cosmic.nix
+│   │   └── gnome.nix
+│   ├── dvpc
+│   │   ├── configuration.nix
+│   │   └── hardware-configuration.nix
+│   └── options
+│       ├── data-drive.nix
+│       ├── firewall.nix
+│       └── nvidia.nix
+├── modules
+│   ├── home-manager
+│   │   └── default.nix
+│   └── nixos
+│       ├── default.nix
+│       └── impermanence.nix
+├── overlays
+│   └── default.nix
+├── pkgs
+│   └── default.nix
+├── wallpapers
+│   ├── boliviainteligente-uf9qc_vaTS4-unsplash.jpg
+│   ├── dots-dark.jpg
+│   ├── light-default.jpg
+│   ├── mountain-side-light.jpg
+│   └── sphere-dots.jpg
+├── flake.lock
+├── flake.nix
+└── README.org
+#+end_example
+
+* Extending to Other Hosts
+
+To add another host, create a new =configuration.nix= and =hardware-configuration.nix= for that host, then add a new entry in =flake.nix= under =nixosConfigurations= and =homeConfigurations=.
+
+* Credits
+
+- Inspired by the NixOS and Home Manager communities.
+
+* License
+
+Specify your license here.
