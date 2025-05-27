@@ -157,6 +157,17 @@
   # Dbus
   services.dbus.enable = true;
 
+  # Auto Scrub & Trim
+  services.btrfs.autoScrub = {
+    enable = true;
+    fileSystems = [ "/" ];
+    interval = "weekly";
+  };
+  services.fstrim = {
+    enable = true;
+    interval = "weekly";
+  };
+
   # Flatpaks
   services.flatpak.enable = true;
   systemd.services.flatpak-repo = {

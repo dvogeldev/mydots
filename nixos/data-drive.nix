@@ -4,6 +4,13 @@
   pkgs,
   ...
 }: {
+  # Auto scrubbing
+  services.btrfs.autoScrub = {
+    enable = true;
+    fileSystems = [ "/data" ];
+    interval = "weekly";
+  };
+
   fileSystems."/data" = {
     device = "/dev/disk/by-uuid/228658b0-3460-4e0d-87d5-f73a4a7a9b12"; # Replace with actual UUID
     fsType = "btrfs";
