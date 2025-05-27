@@ -12,6 +12,7 @@
     ./eza.nix
     ./fish.nix
     ./fzf.nix
+    ./gh.nix
     ./lazydocker.nix
     ./lazygit.nix
     ./ripgrep.nix
