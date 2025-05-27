@@ -37,8 +37,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 3;
-  boot.blacklistedKernelModules = [ "nouveau" ]; # fix potential issues
-  boot.kernelParams = [ "nvidia-drm.modeset=1" "preempt=full" ];
 
   # Enable ZRAM (LZ4, 50% of RAM)
   zramSwap = {
