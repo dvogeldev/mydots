@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+_: {
   programs.skim = {
     enable = true;
     enableFishIntegration = true;
