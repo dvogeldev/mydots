@@ -91,7 +91,7 @@
 	};
         modules = [
           # > Our main nixos configuration file <
-          ./nixos/configuration.nix
+          ./hosts/dvpc/configuration.nix
 	  inputs.stylix.nixosModules.stylix
         ];
       };

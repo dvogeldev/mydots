@@ -23,13 +23,12 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    ./data-drive.nix
-    ./keyd.nix
-    ./podman.nix
-    ./firewall.nix
-    ./nvidia.nix
-    ./gnome.nix
-    # ./cosmic.nix
+    ../common
+    ../options/data-drive.nix
+    ../options/firewall.nix
+    ../options/nvidia.nix
+    ../desktop/gnome.nix
+    # ../desktop/cosmic.nix
 
     #  "${impermanence}/nixos.nix"
   ];
