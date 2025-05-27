@@ -39,5 +39,8 @@ _: {
     gph = "git push";
     gpl = "git pull";
     gs = "git status";
+    # YT-DLP
+    ytda = "yt-dlp -f bestaudio --extract-audio --audio-format ops --audio-quality 0";
+    ytd = "yt-dlp -f bestaudio+bestvideo --merge-output-format mp4";
   };
 }

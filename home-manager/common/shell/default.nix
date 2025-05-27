@@ -19,6 +19,7 @@
     ./skim.nix
     ./tealdeer.nix
     ./yazi.nix
+    ./yt-dlp.nix
     ./zoxide.nix
   ];
 
