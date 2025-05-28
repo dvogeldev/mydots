@@ -25,6 +25,33 @@ in
   wayland.windowManager.sway = {
     enable = true;
     config = {
+      output = {
+        "DP-1" = {
+          mode = "3840x2160@60Hz";
+	  position = "0 0";
+	  scale = 1.6;
+	};
+        "DP-2" = {
+          mode = "3840x2160@60Hz";
+	  position = "3840 0";
+	  scale = 1.6;
+	};
+      };
+      workspaceOutputAssign = {
+        "1" = "DP-1";
+        "2" = "DP-1";
+        "3" = "DP-1";
+        "4" = "DP-1";
+        "5" = "DP-2";
+        "6" = "DP-2";
+        "7" = "DP-2";
+        "8" = "DP-2";
+      };
+      assigns = [
+        { workspace = "1"; app_id = "ghostty"; }
+        { workspace = "2"; app_id = "emacs"; }
+        { workspace = "5"; app_id = "brave"; }
+      ];
       modifier = mod;
       terminal = "ghostty";
       menu = "fuzzel";
@@ -32,8 +59,9 @@ in
         statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
       }];
       keybindings = {
-        "${mod}+Return" = "exec ghostty";
+        "${mod}+Return" = "exec ghostty -e fish";
         "${mod}+d" = "exec fuzzel";
+        "${mod}+e" = "exec emacsclient -c -a 'emacs'";
         "${mod}+q" = "kill";
         # ...add more as needed
       };
@@ -65,4 +93,10 @@ in
     mako
     kanshi
   ];
+  home.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_TYPE = "wayland";
+  };
 }
