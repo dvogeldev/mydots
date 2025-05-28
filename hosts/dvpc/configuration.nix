@@ -9,6 +9,12 @@
   themeConfig,
   ...
 }: {
+  options.my.desktop = lib.mkOption {
+    type = lib.types.enum [ "sway" "gnome" "cosmic" "none" ];
+    default = "none";
+    description = "The desktop environment to use.";
+  };
+
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -27,12 +33,17 @@
     ../options/data-drive.nix
     ../options/firewall.nix
     ../options/nvidia.nix
-    ../desktop/sway.nix
+    # ../desktop/sway.nix
     # ../desktop/gnome.nix
     # ../desktop/cosmic.nix
 
     #  "${impermanence}/nixos.nix"
-  ];
+  ]++ lib.optionals (config.my.desktop == "sway") [ ../desktop/sway.nix ]
+   ++ lib.optionals (config.my.desktop == "gnome") [ ../desktop/gnome.nix ]
+   ++ lib.optionals (config.my.desktop == "cosmic") [ ../desktop/cosmic.nix ];
+
+  # Set the desktop environment
+  my.desktop = "sway"; # Change to "gnome" or "cosmic" or "none" as needed
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
