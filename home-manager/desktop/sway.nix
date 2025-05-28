@@ -26,32 +26,32 @@ in
     enable = true;
     config = {
       output = {
-        "DP-1" = {
+        DP-1 = {
           mode = "3840x2160@60Hz";
 	  position = "0 0";
-	  scale = 1.6;
+	  scale = "1.6";
 	};
-        "DP-2" = {
+        DP-2 = {
           mode = "3840x2160@60Hz";
 	  position = "3840 0";
-	  scale = 1.6;
+	  scale = "1.6";
 	};
       };
-      workspaceOutputAssign = {
-        "1" = "DP-1";
-        "2" = "DP-1";
-        "3" = "DP-1";
-        "4" = "DP-1";
-        "5" = "DP-2";
-        "6" = "DP-2";
-        "7" = "DP-2";
-        "8" = "DP-2";
-      };
-      assigns = [
-        { workspace = "1"; app_id = "ghostty"; }
-        { workspace = "2"; app_id = "emacs"; }
-        { workspace = "5"; app_id = "brave"; }
+      workspaceOutputAssign = [
+        { workspace = "1"; output = "DP-1"; }
+        { workspace = "2"; output = "DP-1"; }
+        { workspace = "3"; output = "DP-1"; }
+        { workspace = "4"; output = "DP-1"; }
+        { workspace = "5"; output = "DP-2"; }
+        { workspace = "6"; output = "DP-2"; }
+        { workspace = "7"; output = "DP-2"; }
+        { workspace = "8"; output = "DP-2"; }
       ];
+      assigns = {
+        "1:IDE" = [{ app_id = "ghostty"; }];
+        "2:Emacs" = [{ app_id = "emacs"; }];
+        "5:Web" = [{ app_id = "brave"; }];
+      };
       modifier = mod;
       terminal = "ghostty";
       menu = "fuzzel";
