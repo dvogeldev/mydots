@@ -1,6 +1,9 @@
 # nixos/desktop/sway.nix
 { config, pkgs, ... }:
 {
+  # Disable default lightdm
+  services.xserver.displayManager.lightdm.enable = false;
+
   # Enable Sway and required system packages
   programs.sway.enable = true;
 

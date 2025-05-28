@@ -4,6 +4,24 @@ let
   mod = "Mod4"; # Super key
 in
 {
+  # Systemd user service to start sway on tty1
+  systemd.user.services.sway-autostart = {
+    Unit = {
+      Description = "Auto start sway on tty1";
+      After = [ "graphical-session-pre.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.sway}/bin/sway";
+      Restart = "on-failure";
+      Environment = "XDG_SESSION_TYPE=wayland";
+      TTYPath = "/dev/tty1";
+      StandardInput = "tty";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     config = {
