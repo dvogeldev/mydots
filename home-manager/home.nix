@@ -22,7 +22,8 @@
     ./common
     ./apps
     ./editor
-    ./desktop/gnome.nix
+    # ./desktop/gnome.nix
+    ./desktop/sway.nix
   ];
 
   nixpkgs = {

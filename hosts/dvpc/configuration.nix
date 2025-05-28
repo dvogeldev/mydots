@@ -27,7 +27,8 @@
     ../options/data-drive.nix
     ../options/firewall.nix
     ../options/nvidia.nix
-    ../desktop/gnome.nix
+    ../desktop/sway.nix
+    # ../desktop/gnome.nix
     # ../desktop/cosmic.nix
 
     #  "${impermanence}/nixos.nix"
