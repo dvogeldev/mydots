@@ -1,11 +1,8 @@
 # ~/.dots/hosts/dvpc/podman.nix
 # Podman configuration for NixOS, imported from configuration.nix
+{ config, pkgs, lib, ... }:
+
 {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
   # Podman package and service
   virtualisation.podman = {
     enable = true;
@@ -16,7 +13,7 @@
     autoPrune = {
       enable = true;
       dates = "weekly";
-      flags = ["--all"];
+      flags = [ "--all" ];
     };
   };
 
@@ -34,14 +31,30 @@
         registries = []
 
         [registries.mirrors]
-          [registries.mirrors."docker.io"]
-            location = ["mirror.gcr.io"]
+        [registries.mirrors."docker.io"]
+        location = ["mirror.gcr.io"]
       '';
     };
   };
 
-  # Enable Nvidia support
-  hardware.nvidia-container-toolkit.enable = true;
+  # Nvidia container toolkit configuration with merged conditions
+  hardware.nvidia-container-toolkit = lib.mkMerge [
+    # For Sway or no desktop
+    (lib.mkIf (config.my.desktop == "sway" || config.my.desktop == "none") {
+      enable = false;
+      suppressNvidiaDriverAssertion = true;
+    })
+    
+    # For GNOME or Cosmic
+    (lib.mkIf (config.my.desktop == "gnome" || config.my.desktop == "cosmic") {
+      enable = false;
+    })
+    
+    # Default setting (applies when no conditions above match)
+    {
+      enable = lib.mkDefault true;
+    }
+  ];
 
   environment.systemPackages = with pkgs; [
     podman-compose

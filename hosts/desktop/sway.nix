@@ -4,6 +4,11 @@
 
   config = lib.mkIf (config.my.desktop == "sway") {
 
+    hardware.nvidia-container-toolkit = {
+      suppressNvidiaDriverAssertion = true;
+      enable = false;
+    };
+
     # Disable default lightdm
     services.xserver.displayManager.lightdm.enable = false;
 
