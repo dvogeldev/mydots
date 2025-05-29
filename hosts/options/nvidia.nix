@@ -3,7 +3,7 @@
 {
   config = lib.mkMerge [
     # NVIDIA proprietary drivers for GNOME
-    (lib.mkIf (config.my.desktop == "gnome") {
+    (lib.mkIf (config.my.desktop == "gnome" || config.my.desktop == "hyprland") {
       services.xserver.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {

@@ -23,7 +23,8 @@
     ./apps
     ./editor
     # ./desktop/gnome.nix
-    ./desktop/sway.nix
+    #./desktop/sway.nix
+    ./desktop/hyprland.nix
   ];
 
   nixpkgs = {

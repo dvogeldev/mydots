@@ -31,6 +31,7 @@
     ../options/nvidia.nix
     ../desktop/sway.nix
     ../desktop/gnome.nix
+    ../desktop/hyprland.nix
     ../desktop/cosmic.nix
 
     #  "${impermanence}/nixos.nix"
@@ -49,7 +50,7 @@
   };
 
   # Set the desktop environment
-  my.desktop = "gnome"; # Change to "gnome" or "cosmic" or "none" as needed
+  my.desktop = "hyprland"; # Change to "gnome" or "cosmic" or "none" as needed
 
   # Impermanence configuration (root filesystem)
   # The actual rootfs will be `@root`, which is ephemeral
@@ -157,7 +158,11 @@
   # Enable sound.
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
+
   };
 
   # Dbus
@@ -275,7 +280,10 @@
     };
   };
 
-  security.sudo.enable = true;
+  security = {
+    sudo.enable = true;
+    rtkit.enable = true;
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.05";
