@@ -53,13 +53,13 @@ in
         "5:Web" = [{ app_id = "brave"; }];
       };
       modifier = mod;
-      terminal = "ghostty";
+      terminal = "ghostty -e fish";
       menu = "fuzzel";
       bars = [{
         statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
       }];
       keybindings = {
-        "${mod}+Return" = "exec ghostty -e fish";
+        "${mod}+Return" = "$terminal";
         "${mod}+d" = "exec fuzzel";
         "${mod}+e" = "exec emacsclient -c -a 'emacs'";
         "${mod}+q" = "kill";
