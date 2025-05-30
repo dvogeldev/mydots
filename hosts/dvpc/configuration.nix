@@ -215,19 +215,12 @@
     procs
     fish
     age
-    fontconfig
-    liberation_ttf
-    poppins
-    nerd-fonts.hasklug
-    nerd-fonts.intone-mono
     alejandra
     gnutar
     xz
     zip
     unzip
   ];
-
-  fonts.fontDir.enable = true;
 
   stylix = {
     enable = true;

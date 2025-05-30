@@ -3,5 +3,6 @@
   imports = [
     ./keyd.nix
     ./podman.nix
+    ./fonts.nix
   ];
 }
