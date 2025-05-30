@@ -4,5 +4,6 @@
     ./keyd.nix
     ./podman.nix
     ./fonts.nix
+    ./sound.nix
   ];
 }
